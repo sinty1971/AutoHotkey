@@ -1,0 +1,16 @@
+// 今日は
+// 今日、‘
+‘‘
+
+きょうは‘
+
+`きょうは``````
+今日は``です
+この関数は`function`です
+この関数は functio
+この関数は functio
+この関数は function 
+この関数は function です。
+この関数は'function'です。
+この関数は`function'です。
+この関数は function です。
