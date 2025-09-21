@@ -68,6 +68,31 @@ $':: {
     }
 }
 
+; バッククオートのホットキー（半角スペースを入力）
+$`:: {
+    global isTemporaryEnglishMode
+
+    ; 現在のIME状態を取得
+    imeState := GetIMEState()
+
+    if (imeState = 1) {
+        ; 日本語モードでバッククオートが入力された場合
+        ; IMEをOFFにして英語モードに切り替える
+        isTemporaryEnglishMode := true
+        SetIMEState(0)  ; 英語モードに切り替え
+        Sleep(50)
+        Send " "  ; 半角スペースを送信
+    } else if (isTemporaryEnglishMode) {
+        ; 一時的な英語モード中（2回目のバッククオート）
+        Send " "  ; 半角スペースを送信
+        SetIMEState(1)  ; 日本語モードに戻す
+        isTemporaryEnglishMode := false
+    } else {
+        ; 通常の英語モード
+        Send " "  ; 半角スペースを送信
+    }
+}
+
 ; SHIFT+スペースのホットキー
 ; +Space:: {
 ;     global isTemporaryEnglishMode
